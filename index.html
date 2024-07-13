@@ -8,18 +8,24 @@
 </head>
 <body >
 <script  src="logika.js"></script>
-
+<div id="image"></div>
 <div id="text" ></div>
-<div id="elements-container" >
+<div id="elements-container" ></div>
 
-</div>
 <style>
+      #image {
+            width: 50vw; /* 50% ширини вікна браузера */
+            height: 50vh; /* 50% висоти вікна браузера */
+            background-color: lightgray;
+           
+            
+        }
      #text {
         margin-top: 2%;
             text-align: center;
             background-color: brown;
-            width: 80%;
-            height: 50%;
+            width: auto;
+            height: auto;
             color: white; 
             padding-left: 5%;
             padding-right: 5%;
@@ -27,6 +33,7 @@
         }
        
         #elements-container {
+            
             display: flex;
             flex-direction: column; /* Вертикальне розташування елементів */
             align-items: center; /* Горизонтальне вирівнювання по центру */
@@ -50,6 +57,26 @@
             height: 100vh; /* Займає всю висоту вікна */
             margin: 0; /* Відсутність зовнішніх відступів */
             background-color: lightgray;
+        }
+
+        .falling-button {
+            background-color: dodgerblue;
+            color: white;
+            padding: 20% 50%;
+            font-size: 100%;
+            border: none;
+            cursor: pointer;
+            animation: fallAnimation 1s ease forwards;
+        }
+
+        @keyframes fallAnimation {
+            0% {
+              
+            }
+            100% {
+                visibility: hidden;
+                opacity: 0; /* За бажанням, кнопка також стає невидимою */
+            }
         }
 </style>
 
