@@ -8,76 +8,96 @@
 </head>
 <body >
 <script  src="logika.js"></script>
-<div id="image"></div>
-<div id="text" ></div>
-<div id="elements-container" ></div>
+
+<div id="elements-container">
+<img id="image" src=""/>
+<div id="text-box" ><p id="text" ></p></div>
+<div id="chose" ></div>
+</div>
 
 <style>
-      #image {
-            width: 50vw; /* 50% ширини вікна браузера */
-            height: 50vh; /* 50% висоти вікна браузера */
-            background-color: lightgray;
-           
-            
-        }
-     #text {
-        margin-top: 2%;
-            text-align: center;
-            background-color: brown;
-            width: auto;
-            height: auto;
-            color: white; 
-            padding-left: 5%;
-            padding-right: 5%;
-            background-position: center;
-        }
+    #text-box {
+        display: inline-block; /* Робить рамку змінною за розміром тексту */
+        padding: 5px; /* Відступ між рамкою і текстом */
+        border: 4px solid #3498db; /* Товщина, тип та колір рамки */
+        border-radius: 5px; /* Закругленість кутів рамки */
+        background-color: #eae4be; /* Колір фону навколо тексту */
+        max-width: 80%; /* Максимальна ширина рамки */
+    }
+
+    #text {
+        font-size: 18px; /* Розмір тексту */
+        line-height: 1.6; /* Міжрядковий інтервал */
+        color: #333; /* Колір тексту */
+        text-align: justify; /* Вирівнювання тексту по ширині */
+    }
        
         #elements-container {
-            
             display: flex;
             flex-direction: column; /* Вертикальне розташування елементів */
             align-items: center; /* Горизонтальне вирівнювання по центру */
             justify-content: center; /* Вертикальне вирівнювання по центру */
-            height: 50%; /* Займає всю висоту вікна */
-            background-color: lightgray;
+            height: 100%; /* Займає всю висоту вікна */
+            background-color: #2b1b5b;
+            overflow: auto; /* Додаємо прокрутку при потребі */
+        }
+        #image{
+            width: 100%;
+            height: auto;
         }
 
-        button {
-          margin-top: 20%;
-        }
-        text {
-          margin-top: 20%;
-        }
+        #chose {
+        display: flex;
+        flex-direction: column; /* Вертикальне розташування елементів */
+        align-items: center; /* Горизонтальне вирівнювання по центру */
+        justify-content: center; /* Вертикальне вирівнювання по центру */
+        height: 150px; /* Фіксована висота кнопки */
+        width: 200px; /* Фіксована ширина кнопки */
+        background-color: #2b1b5b;
+        border: none; /* Видалити рамку */
+        border-radius: 25px; /* Закругленість кутів */
+        color: #fff; /* Колір тексту */
+        font-size: 25px;
+        font-weight: bold;
+        text-transform: uppercase;
+        cursor: pointer;
+        outline: none; /* Видалення контуру при фокусі */
+        padding: 10px; /* Внутрішній відступ */
 
-        body {
-            display: flex;
-            flex-direction: column; /* Вертикальне розташування елементів */
-            justify-content: center; /* Вирівнює всі елементи по центру горизонтально */
-            align-items: center; /* Вирівнює всі елементи по центру вертикально */
-            height: 100vh; /* Займає всю висоту вікна */
-            margin: 0; /* Відсутність зовнішніх відступів */
-            background-color: lightgray;
-        }
+        /* Перехідні ефекти */
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
 
-        .falling-button {
-            background-color: dodgerblue;
-            color: white;
-            padding: 20% 50%;
-            font-size: 100%;
-            border: none;
-            cursor: pointer;
-            animation: fallAnimation 1s ease forwards;
-        }
+    #chose:hover {
+        background-color: #473f7a; /* Змінюємо колір при наведенні */
+    }
 
-        @keyframes fallAnimation {
-            0% {
-              
-            }
-            100% {
-                visibility: hidden;
-                opacity: 0; /* За бажанням, кнопка також стає невидимою */
-            }
-        }
+    #chose:active {
+        transform: scale(0.95); /* Зменшуємо кнопку при натисканні */
+    }
+
+    #chose:focus {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Тінь при фокусі */
+    }
+
+    /* Стилі для кнопок b0, b1, b2 */
+    #b0, #b1, #b2 {
+        width: 100%; /* Займає всю доступну ширину */
+        margin-bottom: 10px; /* Відступ між кнопками */
+        padding: 10px; /* Внутрішній відступ кнопок */
+        background-color: #3498db; /* Колір фону */
+        border-radius: 10px; /* Закругленість кутів */
+        color: #fff; /* Колір тексту */
+        text-align: center; /* Вирівнювання тексту по центру */
+        cursor: pointer; /* Зміна курсору при наведенні */
+        outline: none; /* Видалення контуру при фокусі */
+        border: none; /* Видалити рамку */
+        transition: background-color 0.3s ease; /* Плавна зміна фонового кольору */
+    }
+
+
+
+   
 </style>
 
 

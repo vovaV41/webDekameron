@@ -1,18 +1,14 @@
 
 window.onload = function(){
 
-    addElement("Text", "t0", "Текст 1", "elements-container");
-    addElement("Button", "b0", "Вибор 1", "elements-container");
+    addElement("Button", "b0", "Начать истерически кричать, звать на помощь", "chose");
+    addElement("Button", "b1", "попробовать ориентироваться в лесу", "chose");
+    addElement("Button", "b2", "сходить посрать за дерево забів лопухов", "chose");
 
-    addElement("Text", "t1", "Текст 2", "elements-container");
-    addElement("Button", "b1", "Вибор 2", "elements-container");
+setImage("background.bmp", true);
 
-    addElement("Text", "t2", "Текст 3", "elements-container"); 
-    addElement("Button", "b2", "Вибор 3", "elements-container");
+    addText( "ты видишь перед собой лес, понимаешь что ты лунатик");
 
-setImage("background.bmp");
-    
-addText( "Захочеш найдеш!!!\n 55555");
 document.getElementById('b0').addEventListener('click', function() {
     onClick('b0');
 });
@@ -31,16 +27,23 @@ function onClick(id){
     document.getElementById('b0').setAttribute("class","falling-button");
     document.getElementById('b1').setAttribute("class","falling-button");
     document.getElementById('b2').setAttribute("class","falling-button");
+    if(id=="b0")
+    alert("сорвал голос и обосрался");
+        if(id == "b1")
+            alert("Нашел кента и начал трахать его");
+        if(id == "b2")
+            alert("Хищники нашли тебя и скушали");
 
 }
 
-function setImage(patch){
+function setImage(patch, visible){
     var image = document.getElementById("image");
-    image.style.backgroundImage="url('"+patch+"')";
-    //image.style.display= "none";
-  
-    
-}
+    image.src = patch;
+   if(visible == true){
+    image.style.display= "block";
+   }else{
+    image.style.display= "none";
+}}
 
 
 function addElement( element, id, text, perent) {
