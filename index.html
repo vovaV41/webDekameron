@@ -38,7 +38,7 @@
             align-items: center; /* Горизонтальне вирівнювання по центру */
             justify-content: center; /* Вертикальне вирівнювання по центру */
             height: 100%; /* Займає всю висоту вікна */
-            background-color: #2b1b5b;
+          
             overflow: auto; /* Додаємо прокрутку при потребі */
         }
         #image{
@@ -46,39 +46,22 @@
             height: auto;
         }
 
-        #chose {
-        display: flex;
-        flex-direction: column; /* Вертикальне розташування елементів */
-        align-items: center; /* Горизонтальне вирівнювання по центру */
-        justify-content: center; /* Вертикальне вирівнювання по центру */
-        height: 150px; /* Фіксована висота кнопки */
-        width: 200px; /* Фіксована ширина кнопки */
-        background-color: #2b1b5b;
-        border: none; /* Видалити рамку */
-        border-radius: 25px; /* Закругленість кутів */
-        color: #fff; /* Колір тексту */
-        font-size: 25px;
-        font-weight: bold;
-        text-transform: uppercase;
-        cursor: pointer;
-        outline: none; /* Видалення контуру при фокусі */
-        padding: 10px; /* Внутрішній відступ */
 
-        /* Перехідні ефекти */
-        transition: background-color 0.3s ease, transform 0.2s ease;
+ 
+
+    #b0:active {
+        transform: scale(0.5); /* Зменшуємо кнопку при натисканні */
     }
 
-    #chose:hover {
-        background-color: #473f7a; /* Змінюємо колір при наведенні */
+    #b1:active {
+        transform: scaleX(2);
     }
 
-    #chose:active {
-        transform: scale(0.95); /* Зменшуємо кнопку при натисканні */
+    #b2:active {
+        transform:scaleY(0.50) ;
     }
 
-    #chose:focus {
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Тінь при фокусі */
-    }
+
 
     /* Стилі для кнопок b0, b1, b2 */
     #b0, #b1, #b2 {

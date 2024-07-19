@@ -1,9 +1,30 @@
 
+/* робота з файлами */
+var steps= "0";
+function read_steps(){
+
+
+fetch('story/0')
+.then(response => response.text())
+.then(data => {
+    document.getElementById('text').textContent = data;
+})
+.catch(error => {
+    console.error('Error fetching the file:', error);
+    document.getElementById('text').textContent = 'Не вдалося завантажити файл.';
+});
+
+
+
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 window.onload = function(){
 
-    addElement("Button", "b0", "Начать истерически кричать, звать на помощь", "chose");
-    addElement("Button", "b1", "попробовать ориентироваться в лесу", "chose");
-    addElement("Button", "b2", "сходить посрать за дерево забів лопухов", "chose");
+    read_steps();
+    addElement("Button", "b0", "Начать истерически кричать, звать на помощь", "chose",true);
+    addElement("Button", "b1", "попробовать ориентироваться в лесу", "chose", true);
+    addElement("Button", "b2", "сходить посрать за дерево забів лопухов", "chose", true);
 
 setImage("background.bmp", true);
 
@@ -27,13 +48,10 @@ function onClick(id){
     document.getElementById('b0').setAttribute("class","falling-button");
     document.getElementById('b1').setAttribute("class","falling-button");
     document.getElementById('b2').setAttribute("class","falling-button");
-    if(id=="b0")
-    alert("сорвал голос и обосрался");
-        if(id == "b1")
-            alert("Нашел кента и начал трахать его");
-        if(id == "b2")
-            alert("Хищники нашли тебя и скушали");
 
+        if(id == "b1"){document.getElementById(id).innerText ="Нашел кента и начал трахать его";}
+        if(id == "b0"){document.getElementById(id).innerText ="сорвал голос и обосрался";}
+        if(id == "b2"){document.getElementById(id).innerText ="Хищники нашли тебя и скушали";}
 }
 
 function setImage(patch, visible){
@@ -46,11 +64,18 @@ function setImage(patch, visible){
 }}
 
 
-function addElement( element, id, text, perent) {
+function addElement( element, id, text, perent, visible) {
     var newElement = document.createElement(element);
     newElement.innerText = text;
     newElement.setAttribute('id', id);
+
+    if(visible == true){
+        newElement.style.display = "block";
+    }else{
+        newElement.style.display = "none";
+}
     document.getElementById(perent).appendChild(newElement);
+
 }
 
 function addText(text){
