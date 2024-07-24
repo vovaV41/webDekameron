@@ -48,35 +48,36 @@ window.onload = function() {
     const buttonB1 = document.getElementById('b1');
     const buttonB2 = document.getElementById('b2');
 
-    if (buttonB0) {
-        buttonB0.addEventListener('click', function() {
-            steps += "0";
-            onClick('b0');
-        });
-    }
-    if (buttonB1) {
-        buttonB1.addEventListener('click', function() {
-            steps += "1";
-            onClick('b1');
-        });
-    }
-    if (buttonB2) {
-        buttonB2.addEventListener('click', function() {
-            steps += "2";
-            onClick('b2');
-        });
-    }
+    buttonB0?.addEventListener('click', function() {
+        handleButtonClick(buttonB0, '0');
+    });
+    buttonB1?.addEventListener('click', function() {
+        handleButtonClick(buttonB1, '1');
+    });
+    buttonB2?.addEventListener('click', function() {
+        handleButtonClick(buttonB2, '2');
+    });
 
     read_steps(steps);
     checkAndSetImage();
     
 }
 
-function onClick(id) {
+function handleButtonClick(button, step) {
+    button.classList.add('animate');
+    button.addEventListener('animationend', function() {
+        button.classList.remove('animate');
+        steps += step;
+        read_steps(steps);
+        checkAndSetImage();
+    }, { once: true });
+}
+
+function onClick(id) {/*
     document.getElementById('b0').setAttribute("class", "falling-button");
     document.getElementById('b1').setAttribute("class", "falling-button");
-    document.getElementById('b2').setAttribute("class", "falling-button");
-
+    document.getElementById('b2').setAttribute("class", "falling-button");*/
+  
   
     read_steps(steps);
     checkAndSetImage();

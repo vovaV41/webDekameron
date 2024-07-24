@@ -12,25 +12,58 @@
 <div id="elements-container">
 <img id="image" src=""/>
 <div id="text-box" ><p id="text" ></p></div>
-<div id="chose" ></div>
+<div id="chose">
+</div>
 </div>
 
 <style>
-    #text-box {
-        display: inline-block; /* Робить рамку змінною за розміром тексту */
-        padding: 5px; /* Відступ між рамкою і текстом */
-        border: 4px solid #3498db; /* Товщина, тип та колір рамки */
-        border-radius: 5px; /* Закругленість кутів рамки */
-        background-color: #eae4be; /* Колір фону навколо тексту */
-        max-width: 80%; /* Максимальна ширина рамки */
+ #text-box {
+    display: inline-block; /* Робить рамку змінною за розміром тексту */
+    padding: 5px; /* Відступ між рамкою і текстом */
+    border: 4px solid transparent; /* Прозора рамка для анімації */
+    border-radius: 5px; /* Закругленість кутів рамки */
+    background-color: #eae4be; /* Колір фону навколо тексту */
+    max-width: 90%; /* Максимальна ширина рамки */
+    position: relative; /* Позиціонування для псевдоелемента */
+}
+
+#text {
+    font-size: 18px; /* Розмір тексту */
+    line-height: 1.6; /* Міжрядковий інтервал */
+    color: #333; /* Колір тексту */
+    text-align: justify; /* Вирівнювання тексту по ширині */
+}
+
+#text-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 4px solid #0d93eb8c; /* Товщина, тип та колір рамки */
+    border-radius: 5px; /* Закругленість кутів рамки */
+    box-sizing: border-box;
+    animation: border-anim 10s linear infinite;
+}
+
+@keyframes border-anim {
+    0% {
+        opacity: 1;
+        
+    }
+ 
+   80%{
+    opacity: 0;
+   }
+  
+    100% {
+        opacity: 1;
+
     }
 
-    #text {
-        font-size: 18px; /* Розмір тексту */
-        line-height: 1.6; /* Міжрядковий інтервал */
-        color: #333; /* Колір тексту */
-        text-align: justify; /* Вирівнювання тексту по ширині */
-    }
+}
+
        
         #elements-container {
             display: flex;
@@ -46,41 +79,67 @@
             height: auto;
         }
 
-
- 
-
-    #b0:active {
-        transform: scale(0.5); /* Зменшуємо кнопку при натисканні */
-    }
-
-    #b1:active {
-        transform: scaleX(2);
-    }
-
-    #b2:active {
-        transform:scaleY(0.50) ;
-    }
-
-
-
-    /* Стилі для кнопок b0, b1, b2 */
-    #b0, #b1, #b2 {
-        width: 100%; /* Займає всю доступну ширину */
-        margin-bottom: 10px; /* Відступ між кнопками */
-        padding: 10px; /* Внутрішній відступ кнопок */
-        background-color: #3498db; /* Колір фону */
-        border-radius: 10px; /* Закругленість кутів */
-        color: #fff; /* Колір тексту */
-        text-align: center; /* Вирівнювання тексту по центру */
-        cursor: pointer; /* Зміна курсору при наведенні */
-        outline: none; /* Видалення контуру при фокусі */
-        border: none; /* Видалити рамку */
-        transition: background-color 0.3s ease; /* Плавна зміна фонового кольору */
-    }
-
-
-
    
+
+
+
+    html {
+  height: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  min-height: 100%;
+  position: relative;
+  padding-bottom: 3rem;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  width: 100%;
+  background: linear-gradient(170deg, rgba(49, 57, 73, 0.8) 20%, rgba(49, 57, 73, 0.5) 20%, rgba(49, 57, 73, 0.5) 35%,
+   rgba(41, 48, 61, 0.6) 35%, rgba(41, 48, 61, 0.8) 45%, rgba(31, 36, 46, 0.5) 45%, rgba(31, 36, 46, 0.8) 75%,
+    rgba(49, 57, 73, 0.5) 75%), linear-gradient(45deg, rgba(20, 24, 31, 0.8) 0%, rgba(41, 48, 61, 0.8) 50%, rgba(82, 95, 122, 0.8) 
+    50%, rgba(133, 146, 173, 0.8) 100%) #313949;
+    
+}
+
+button {
+text-shadow: #eae4be;
+  margin: 20px;
+  text-align: center;
+  height: 50px;
+    border-radius: 80px;
+    text-decoration: none;
+    color: white;
+    background: #394f76;
+    box-shadow: 0 5px 0 #0e2c7092;
+}
+
+button.animate{
+    letter-spacing: 2px;
+    animation: smoke 1s ;
+  
+
+}
+
+@keyframes  smoke {
+         0%{
+
+            opacity: 1;
+         }
+         50%{
+                filter: blur(5em);
+                opacity: 0;
+              
+         }
+            100% {
+
+                opacity: 1;
+            }
+        }
+
+
 </style>
 
 
