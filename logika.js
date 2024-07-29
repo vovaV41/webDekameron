@@ -1,9 +1,14 @@
 /* Робота з файлами */
 var steps = "0";
+var nameStory = "";
 var textStory = "null";
+var ver = 1; 
 
 function read_steps(step) {
-    fetch('story/' + step)
+if(sessionStorage.getItem("selectName") ==null)
+    location.href = "list.html";
+
+    fetch('story/' +sessionStorage.getItem("selectName") +"/"+ step)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Файл не знайдено');
@@ -40,6 +45,10 @@ function splitText(text) {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 window.onload = function() {
     
+    if(sessionStorage.getItem("selectName") ==null)
+        location.href= "list.html"
+
+
     addElement("Button", "b0", '', "chose", false);
     addElement("Button", "b1", '', "chose", false);
     addElement("Button", "b2", '', "chose", false);
@@ -47,6 +56,8 @@ window.onload = function() {
     const buttonB0 = document.getElementById('b0');
     const buttonB1 = document.getElementById('b1');
     const buttonB2 = document.getElementById('b2');
+    const blist = document.getElementById("blist");
+    const bdelete = document.getElementById("bdelete");
 
     buttonB0?.addEventListener('click', function() {
         handleButtonClick(buttonB0, '0');
@@ -57,31 +68,55 @@ window.onload = function() {
     buttonB2?.addEventListener('click', function() {
         handleButtonClick(buttonB2, '2');
     });
+    bdelete?.addEventListener('click', function(){
+            clickButton(1);
+        });
+blist?.addEventListener('click', function(){
+        clickButton(2);
+        });
 
-    read_steps(steps);
+
+
+    read_steps(localStorage.getItem(sessionStorage.getItem("selectName")));
     checkAndSetImage();
     
+}
+function clickButton(numbButton){
+    switch(numbButton){
+case 1 :{
+    if(confirm("Delete steps?")){
+    localStorage.setItem(sessionStorage.getItem("selectName"),'0');
+    sessionStorage.removeItem("selectName");
+    location.reload(true);}
+    break;
+}
+case 2:{
+    location.href = "list.html";
+    sessionStorage.removeItem("selectName");
+    break;
+}
+    }
+
 }
 
 function handleButtonClick(button, step) {
     button.classList.add('animate');
     button.addEventListener('animationend', function() {
         button.classList.remove('animate');
-        steps += step;
-        read_steps(steps);
+        
+        var tmpStep = localStorage.getItem(sessionStorage.getItem("selectName"));
+        tmpStep += step;
+        localStorage.setItem(sessionStorage.getItem("selectName"),tmpStep);
+
+        read_steps(localStorage.getItem(sessionStorage.getItem("selectName")));
         checkAndSetImage();
     }, { once: true });
 }
 
-function onClick(id) {/*
-    document.getElementById('b0').setAttribute("class", "falling-button");
-    document.getElementById('b1').setAttribute("class", "falling-button");
-    document.getElementById('b2').setAttribute("class", "falling-button");*/
-  
-  
-    read_steps(steps);
+function onClick() {
+    read_steps(localStorage.getItem(sessionStorage.getItem("selectName")));
     checkAndSetImage();
-   
+     
 }
 
 
@@ -115,7 +150,14 @@ function addText(text) {
 }
 
 async function checkAndSetImage() {
-    const imagePath = `story/${steps}.jpg`;
+
+if(sessionStorage.getItem("selectName") == null)
+    location.href = "list.html";
+
+    const imagePath = 'story/'+
+    sessionStorage.getItem("selectName")+"/"+
+    localStorage.getItem(sessionStorage.getItem("selectName"))
+    +'.jpg';
     console.warn(imagePath);
 
     try {
