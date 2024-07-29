@@ -9,7 +9,7 @@
 <body>
     <div id="button-container"></div>
     <script>
-        fetch('/webDekameron/list.txt')
+        fetch('list.txt')
             .then(response => response.text())
             .then(text => {
                 const lines = text.split('\n').filter(line => line.trim() !== '');
@@ -27,7 +27,7 @@
                     }else{
                         sessionStorage.setItem("selectName",text);
                     }
-                    location.href = "webDekameron/index.html";
+                    location.href = "/";
                     
                 }
 
