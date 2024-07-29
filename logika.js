@@ -6,9 +6,9 @@ var ver = 1;
 
 function read_steps(step) {
 if(sessionStorage.getItem("selectName") ==null)
-    location.href = "list.html";
+    location.href = "webDekameron/list.html";
 
-    fetch('story/' +sessionStorage.getItem("selectName") +"/"+ step)
+    fetch('webDekameron/story/' +sessionStorage.getItem("selectName") +"/"+ step)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Файл не знайдено');
@@ -46,7 +46,7 @@ function splitText(text) {
 window.onload = function() {
     
     if(sessionStorage.getItem("selectName") ==null)
-        location.href= "list.html"
+        location.href= "webDekameron/list.html"
 
 
     addElement("Button", "b0", '', "chose", false);
@@ -91,7 +91,7 @@ case 1 :{
     break;
 }
 case 2:{
-    location.href = "list.html";
+    location.href = "webDekameron/list.html";
     sessionStorage.removeItem("selectName");
     break;
 }
@@ -152,9 +152,9 @@ function addText(text) {
 async function checkAndSetImage() {
 
 if(sessionStorage.getItem("selectName") == null)
-    location.href = "list.html";
+    location.href = "webDekameron/list.html";
 
-    const imagePath = 'story/'+
+    const imagePath = 'webDekameron/story/'+
     sessionStorage.getItem("selectName")+"/"+
     localStorage.getItem(sessionStorage.getItem("selectName"))
     +'.jpg';
