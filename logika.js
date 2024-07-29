@@ -4,6 +4,7 @@ var nameStory = "";
 var textStory = "null";
 var ver = 1; 
 
+
 function read_steps(step) {
 if(sessionStorage.getItem("selectName") ==null)
     location.href = "list.html";
@@ -58,6 +59,7 @@ window.onload = function() {
     const buttonB2 = document.getElementById('b2');
     const blist = document.getElementById("blist");
     const bdelete = document.getElementById("bdelete");
+    const bug = document.getElementById("bug");
 
     buttonB0?.addEventListener('click', function() {
         handleButtonClick(buttonB0, '0');
@@ -71,9 +73,12 @@ window.onload = function() {
     bdelete?.addEventListener('click', function(){
             clickButton(1);
         });
-blist?.addEventListener('click', function(){
-        clickButton(2);
-        });
+    blist?.addEventListener('click', function(){
+            clickButton(2);
+            });
+    bug?.addEventListener('click', function(){
+                clickButton(3);
+                });
 
 
 
@@ -93,6 +98,26 @@ case 1 :{
 case 2:{
     location.href = "list.html";
     sessionStorage.removeItem("selectName");
+    break;
+}
+case 3:{
+    editElement("b0","",false);
+    editElement("b1","",false);
+    editElement("b2","",false);
+    setImage("",false);
+
+    if(document.getElementById("b3") == null)
+    addElement("Button", "b3", 'Копировать и выйти', "chose", true);
+
+    document.getElementById("b3").addEventListener("click", function(){
+        navigator.clipboard.writeText("xxx-xxx-xxx");
+        location.reload();
+    });
+
+    addText("Привет, юный друг. Я разработчик SHARATA. "+
+        " Здесь не будет реклами, поэтому,"+
+        " если вы хотите поддержать проект, я продолжу.\n\n"+
+" Ваши данные не собираются и не хранятся");
     break;
 }
     }
@@ -115,8 +140,7 @@ function handleButtonClick(button, step) {
 
 function onClick() {
     read_steps(localStorage.getItem(sessionStorage.getItem("selectName")));
-    checkAndSetImage();
-     
+    checkAndSetImage();    
 }
 
 

@@ -32,25 +32,10 @@
                 }
 
                     container.appendChild(button);
+                    container.append(document.createElement("br"));
                 });
             })
             .catch(error => console.error('Помилка завантаження:', error));
     </script>
 </body>
-
-<style>
-    .button {
-        display: block;
-        margin: 5px;
-        padding: 10px;
-        background-color: #007bff;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-    .button:hover {
-        background-color: #0056b3;
-    }
-</style>
 </html>
