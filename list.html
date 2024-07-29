@@ -9,7 +9,7 @@
 <body>
     <div id="button-container"></div>
     <script>
-        fetch('/list.txt')
+        fetch('/webDekameron/list.txt')
             .then(response => response.text())
             .then(text => {
                 const lines = text.split('\n').filter(line => line.trim() !== '');
